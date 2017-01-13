@@ -37,10 +37,11 @@ public class MainActivity extends AppCompatActivity {
         final Button restar =(Button)findViewById(R.id.btn_restar);
         Button mutiplicar= (Button)findViewById(R.id.btn_multiplicar);
         Button dividir = (Button)findViewById(R.id.btn_dividir);
-        Button igual = (Button)findViewById(R.id.btn_igual);
+        final Button igual = (Button)findViewById(R.id.btn_igual);
         Button borrar = (Button)findViewById(R.id.btn_ce);
+        Button memo = (Button)findViewById(R.id.btn_memo);
 
-
+        igual.setEnabled(false);
 
         num0.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 n1=result.getText().toString();
+                igual.setEnabled(true);
                 result.setText("");
 
                 tipoOpera="suma";
@@ -146,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 n1=result.getText().toString();
+                igual.setEnabled(true);
                 result.setText("");
 
                 tipoOpera="resta";
@@ -157,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 n1=result.getText().toString();
+                igual.setEnabled(true);
                 result.setText("");
 
                 tipoOpera="divi";
@@ -169,8 +173,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 n1=result.getText().toString();
+                igual.setEnabled(true);
                 result.setText("");
-
                 tipoOpera="multi";
 
             }
@@ -183,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (result.getText().toString().isEmpty()){
                     result.setText("");
+
                 }else {
 
 
@@ -194,21 +199,21 @@ public class MainActivity extends AppCompatActivity {
                     if (tipoOpera.equals("suma")) {
                         opera.sumar(num1, num2);
                         result.setText("");
-                        result.setText("" + opera.getSuma());
+                        result.setText(String.valueOf(opera.getSuma()));
 
 
                     }
                     if (tipoOpera.equals("resta")) {
                         opera.restar(num1, num2);
                         result.setText("");
-                        result.setText("" + opera.getResta());
+                        result.setText(String.valueOf(opera.getResta()));
 
                     }
 
                     if (tipoOpera.equals("multi")) {
                         opera.multiplicar(num1, num2);
                         result.setText("");
-                        result.setText("" + opera.getMultiplicacion());
+                        result.setText(String.valueOf(opera.getMultiplicacion()));
 
                     }
 
@@ -220,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             opera.dividir(num1, num2);
                             result.setText("");
-                            result.setText("" + opera.getDivision());
+                            result.setText(String.valueOf(opera.getDivision()));
                         }
                     }
                 }
@@ -235,13 +240,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 result.setText("");
+                igual.setEnabled(false);
             }
         });
 
 
-        /*
+        memo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                result.setText("");
+                result.setText(opera.getMemo());
+            }
+        });
 
-         */
 
 
 

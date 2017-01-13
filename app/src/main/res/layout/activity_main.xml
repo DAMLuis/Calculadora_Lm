@@ -195,4 +195,15 @@
         android:background="#74d41b"
         />
 
+    <Button
+        android:text="@string/memo"
+        android:layout_width="135dp"
+        android:layout_height="60dp"
+        android:background="#74d41b"
+        android:id="@+id/btn_memo"
+        android:layout_below="@+id/btn_igual"
+        android:layout_alignStart="@+id/btn_igual"
+        android:layout_marginTop="10dp"
+        android:textSize="24sp" />
+
 </RelativeLayout>
