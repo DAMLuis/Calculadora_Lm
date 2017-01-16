@@ -15,13 +15,14 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:inputType="textPersonName"
         android:ems="30"
         android:layout_marginTop="20dp"
         android:textSize="22sp"
         android:textColor="#ffffff"
         android:background="#565656"
         android:id="@+id/edt_result"
+        android:padding="5dp"
+        android:textAlignment="textEnd"
         />
 
     <Button

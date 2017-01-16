@@ -12,13 +12,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    Operacion opera= new Operacion();
-    String tipoOpera;
+    Operacion opera;
     String n1 ,n2;
     Button igual;
     EditText result;
     Button mr, memo;
     boolean elec_suma, elec_resta, elec_divi, elec_multi;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         Button num7 =(Button)findViewById(R.id.btn_7);
         Button num8 =(Button)findViewById(R.id.btn_8);
         Button num9 =(Button)findViewById(R.id.btn_9);
-        Button sumar =(Button)findViewById(R.id.btn_sumar);
+        final Button sumar =(Button)findViewById(R.id.btn_sumar);
         final Button restar =(Button)findViewById(R.id.btn_restar);
         Button mutiplicar= (Button)findViewById(R.id.btn_multiplicar);
         Button dividir = (Button)findViewById(R.id.btn_dividir);
@@ -44,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         memo = (Button)findViewById(R.id.btn_memo);
         mr= (Button)findViewById(R.id.btn_mr);
         igual.setEnabled(false);
+        result.setEnabled(false);
+
+        elec_suma=false; elec_resta=false; elec_divi=false; elec_multi=false;
 
         num0.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,9 +142,8 @@ public class MainActivity extends AppCompatActivity {
                 n1=result.getText().toString();
                 igual.setEnabled(true);
                 result.setText("");
-
                 elec_suma=true;
-
+                elec_resta=false; elec_divi=false; elec_multi=false;
             }
         });
 
@@ -154,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 result.setText("");
 
                 elec_resta=true;
-
+                elec_suma=false; elec_divi=false; elec_multi=false;
             }
         });
 
@@ -166,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
                 result.setText("");
 
                 elec_divi=true;
-
+                elec_resta=false; elec_suma=false; elec_multi=false;
             }
         });
 
@@ -178,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 igual.setEnabled(true);
                 result.setText("");
                 elec_multi=true;
-
+                elec_resta=false; elec_divi=false; elec_suma=false;
             }
         });
 
@@ -199,23 +201,23 @@ public class MainActivity extends AppCompatActivity {
                     int num2 = Integer.parseInt(n2);
 
                     if (elec_suma) {
-                        opera.sumar(num1, num2);
+                       opera= new Operacion(num1,num2,"Suma");
                         result.setText("");
-                        result.setText(String.valueOf(opera.getSuma()));
+                        result.setText(String.valueOf(num1+num2));
 
 
                     }
                     if (elec_resta) {
-                        opera.restar(num1, num2);
+                        opera=new Operacion(num1,num2,"Restar");
                         result.setText("");
-                        result.setText(String.valueOf(opera.getResta()));
+                        result.setText(String.valueOf(num1-num2));
 
                     }
 
                     if (elec_multi) {
-                        opera.multiplicar(num1, num2);
+                        opera=new Operacion(num1,num2,"Multiplicacion");
                         result.setText("");
-                        result.setText(String.valueOf(opera.getMultiplicacion()));
+                        result.setText(String.valueOf(num1*num2));
 
                     }
 
@@ -225,9 +227,9 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Error!!", Toast.LENGTH_SHORT).show();
                             result.setText("");
                         } else {
-                            opera.dividir(num1, num2);
+                            opera=new Operacion(num1,num2,"division");
                             result.setText("");
-                            result.setText(String.valueOf(opera.getDivision()));
+                            result.setText(String.valueOf(num1/num2));
                         }
                     }
                 }

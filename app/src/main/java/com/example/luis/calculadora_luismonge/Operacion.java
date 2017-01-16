@@ -3,53 +3,49 @@ package com.example.luis.calculadora_luismonge;
 
 import java.util.ArrayList;
 
-
 public class Operacion {
 
-    private int suma;
-    private int resta;
-    private int multiplicacion;
-    private int division;
-
+    private int n1, n2;
+    private String opera;
     private String memo="";
+    private ArrayList<String>datos=new ArrayList<>();
 
 
-
-    public void sumar(int n1,int n2){
-        suma=n1+n2;
+    public Operacion() {
     }
 
-    public void restar(int n1, int n2){
-
-        resta=n1-n2;
-
-    }
-
-    public void dividir(int n1, int n2){
-        division=n1/n2;
-    }
-
-    public void multiplicar(int n1, int n2){
-        multiplicacion=n1*n2;
+    public Operacion(int n1, int n2, String opera) {
+        this.n1 = n1;
+        this.n2 = n2;
+        this.opera = opera;
     }
 
 
-    public int getSuma() {
-        return suma;
+    public int getN1() {
+        return n1;
     }
 
-    public int getResta() {
-        return resta;
+    public void setN1(int n1) {
+        this.n1 = n1;
     }
 
-    public int getMultiplicacion() {
-
-        return multiplicacion;
+    public void setN2(int n2) {
+        this.n2 = n2;
     }
 
-    public int getDivision() {
-        return division;
+    public void setOpera(String opera) {
+        this.opera = opera;
     }
+
+    public int getN2() {
+        return n2;
+
+    }
+
+    public String getOpera() {
+        return opera;
+    }
+
 
 
     public String getMemo() {
