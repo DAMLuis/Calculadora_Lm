@@ -18,13 +18,13 @@ public class MainActivity extends AppCompatActivity {
     Button igual;
     EditText result;
     Button mr, memo;
+    boolean elec_suma, elec_resta, elec_divi, elec_multi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ArrayList<Integer>memoria= new ArrayList<>();
         result=(EditText)findViewById(R.id.edt_result);
         Button num0 =(Button)findViewById(R.id.btn_0);
         Button num1 =(Button)findViewById(R.id.btn_1);
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 igual.setEnabled(true);
                 result.setText("");
 
-                tipoOpera="suma";
+                elec_suma=true;
 
             }
         });
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 igual.setEnabled(true);
                 result.setText("");
 
-                tipoOpera="resta";
+                elec_resta=true;
 
             }
         });
@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                 igual.setEnabled(true);
                 result.setText("");
 
-                tipoOpera="divi";
+                elec_divi=true;
 
             }
         });
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                 n1=result.getText().toString();
                 igual.setEnabled(true);
                 result.setText("");
-                tipoOpera="multi";
+                elec_multi=true;
 
             }
         });
@@ -198,28 +198,28 @@ public class MainActivity extends AppCompatActivity {
                     int num1 = Integer.parseInt(n1);
                     int num2 = Integer.parseInt(n2);
 
-                    if (tipoOpera.equals("suma")) {
+                    if (elec_suma) {
                         opera.sumar(num1, num2);
                         result.setText("");
                         result.setText(String.valueOf(opera.getSuma()));
 
 
                     }
-                    if (tipoOpera.equals("resta")) {
+                    if (elec_resta) {
                         opera.restar(num1, num2);
                         result.setText("");
                         result.setText(String.valueOf(opera.getResta()));
 
                     }
 
-                    if (tipoOpera.equals("multi")) {
+                    if (elec_multi) {
                         opera.multiplicar(num1, num2);
                         result.setText("");
                         result.setText(String.valueOf(opera.getMultiplicacion()));
 
                     }
 
-                    if (tipoOpera.equals("divi")) {
+                    if (elec_divi) {
 
                         if (num1 <= 0 || num2 <= 0) {
                             Toast.makeText(getApplicationContext(), "Error!!", Toast.LENGTH_SHORT).show();

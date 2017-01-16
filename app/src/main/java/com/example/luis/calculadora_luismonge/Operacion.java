@@ -35,12 +35,10 @@ public class Operacion {
 
 
     public int getSuma() {
-
         return suma;
     }
 
     public int getResta() {
-
         return resta;
     }
 
@@ -50,7 +48,6 @@ public class Operacion {
     }
 
     public int getDivision() {
-
         return division;
     }
 
