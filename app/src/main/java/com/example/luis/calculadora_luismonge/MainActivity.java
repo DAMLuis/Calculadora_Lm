@@ -16,7 +16,8 @@ public class MainActivity extends AppCompatActivity {
     String n1 ,n2;
     Button igual;
     EditText result;
-    Button mr, memo;
+    Button mr, ms, memoOpera;
+    int contMemo=0;
     boolean elec_suma, elec_resta, elec_divi, elec_multi;
 
 
@@ -41,10 +42,12 @@ public class MainActivity extends AppCompatActivity {
         Button mutiplicar= (Button)findViewById(R.id.btn_multiplicar);
         Button dividir = (Button)findViewById(R.id.btn_dividir);
         igual = (Button)findViewById(R.id.btn_igual);
-        memo = (Button)findViewById(R.id.btn_memo);
+        ms = (Button)findViewById(R.id.btn_ms);
         mr= (Button)findViewById(R.id.btn_mr);
+        memoOpera=(Button)findViewById(R.id.btn_memoOpera) ;
         igual.setEnabled(false);
         result.setEnabled(false);
+        memoOpera.setEnabled(false);
 
         elec_suma=false; elec_resta=false; elec_divi=false; elec_multi=false;
 
@@ -194,28 +197,28 @@ public class MainActivity extends AppCompatActivity {
 
                 }else {
 
-
+                    memoOpera.setEnabled(true);
                     n2 = result.getText().toString();
 
                     int num1 = Integer.parseInt(n1);
                     int num2 = Integer.parseInt(n2);
 
                     if (elec_suma) {
-                       opera= new Operacion(num1,num2,"Suma");
+                       opera= new Operacion(num1,num2,"+");
                         result.setText("");
                         result.setText(String.valueOf(num1+num2));
 
 
                     }
                     if (elec_resta) {
-                        opera=new Operacion(num1,num2,"Restar");
+                        opera=new Operacion(num1,num2,"-");
                         result.setText("");
                         result.setText(String.valueOf(num1-num2));
 
                     }
 
                     if (elec_multi) {
-                        opera=new Operacion(num1,num2,"Multiplicacion");
+                        opera=new Operacion(num1,num2,"*");
                         result.setText("");
                         result.setText(String.valueOf(num1*num2));
 
@@ -227,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Error!!", Toast.LENGTH_SHORT).show();
                             result.setText("");
                         } else {
-                            opera=new Operacion(num1,num2,"division");
+                            opera=new Operacion(num1,num2,"/");
                             result.setText("");
                             result.setText(String.valueOf(num1/num2));
                         }
@@ -240,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         mr.setEnabled(false);
-        memo.setOnClickListener(new View.OnClickListener() {
+        ms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String re=result.getText().toString();
@@ -254,6 +257,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 result.setText(opera.getMemo());
+            }
+        });
+
+        memoOpera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(contMemo==Operacion.datos.size()){
+                    contMemo=0;
+                }
+                result.setText(Operacion.datos.get(contMemo));
+
+                contMemo++;
+
+
             }
         });
 
