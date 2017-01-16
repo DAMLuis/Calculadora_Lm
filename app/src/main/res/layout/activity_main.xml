@@ -145,7 +145,7 @@
         android:layout_below="@+id/btn_2"
         android:layout_alignStart="@+id/btn_2"
         android:layout_marginTop="10dp"
-
+        android:onClick="borrar"
         android:elevation="0dp" />
 
     <Button
@@ -197,13 +197,25 @@
 
     <Button
         android:text="@string/memo"
-        android:layout_width="135dp"
+        android:layout_width="60dp"
         android:layout_height="60dp"
         android:background="#74d41b"
         android:id="@+id/btn_memo"
         android:layout_below="@+id/btn_igual"
         android:layout_alignStart="@+id/btn_igual"
         android:layout_marginTop="10dp"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
+
+    <Button
+        android:text="MR"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="#74d41b"
+        android:id="@+id/btn_mr"
+        android:layout_toEndOf="@+id/btn_memo"
+        android:layout_marginStart="15dp"
+        android:layout_alignBottom="@id/btn_memo"
+        android:onClick="MR"
+        android:textSize="20sp" />
 
 </RelativeLayout>

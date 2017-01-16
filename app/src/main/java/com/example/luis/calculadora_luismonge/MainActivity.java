@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
     Operacion opera= new Operacion();
     String tipoOpera;
     String n1 ,n2;
+    Button igual;
+    EditText result;
+    Button mr, memo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final ArrayList<Integer>memoria= new ArrayList<>();
-        final EditText result=(EditText)findViewById(R.id.edt_result);
+        result=(EditText)findViewById(R.id.edt_result);
         Button num0 =(Button)findViewById(R.id.btn_0);
         Button num1 =(Button)findViewById(R.id.btn_1);
         Button num2 =(Button)findViewById(R.id.btn_2);
@@ -37,10 +40,9 @@ public class MainActivity extends AppCompatActivity {
         final Button restar =(Button)findViewById(R.id.btn_restar);
         Button mutiplicar= (Button)findViewById(R.id.btn_multiplicar);
         Button dividir = (Button)findViewById(R.id.btn_dividir);
-        final Button igual = (Button)findViewById(R.id.btn_igual);
-        Button borrar = (Button)findViewById(R.id.btn_ce);
-        Button memo = (Button)findViewById(R.id.btn_memo);
-
+        igual = (Button)findViewById(R.id.btn_igual);
+        memo = (Button)findViewById(R.id.btn_memo);
+        mr= (Button)findViewById(R.id.btn_mr);
         igual.setEnabled(false);
 
         num0.setOnClickListener(new View.OnClickListener() {
@@ -235,25 +237,31 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        borrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                result.setText("");
-                igual.setEnabled(false);
-            }
-        });
-
-
+        mr.setEnabled(false);
         memo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                result.setText("");
+                String re=result.getText().toString();
+                opera.setMemo(re);
+                mr.setEnabled(true);
+
+            }
+        });
+
+        mr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 result.setText(opera.getMemo());
             }
         });
 
-
-
-
     }
+
+    public void borrar(View view){
+        result.setText("");
+        igual.setEnabled(false);
+    }
+
+
+
 }
