@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     Operacion opera;
+    Operacion op= new Operacion();
     String n1 ,n2;
     Button igual;
     EditText result;
@@ -192,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
         igual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (result.getText().toString().isEmpty()){
                     result.setText("");
 
@@ -247,7 +249,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String re=result.getText().toString();
-                opera.setMemo(re);
+                if(re.isEmpty()){
+                    op.setMemo("");
+
+                }else{
+                    op.setMemo(re);
+                }
+
                 mr.setEnabled(true);
 
             }
@@ -256,7 +264,13 @@ public class MainActivity extends AppCompatActivity {
         mr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                result.setText(opera.getMemo());
+
+                if(op.getMemo().equals("")){
+                    result.setText("");
+                }else{
+                    result.setText(op.getMemo());
+                }
+
             }
         });
 
