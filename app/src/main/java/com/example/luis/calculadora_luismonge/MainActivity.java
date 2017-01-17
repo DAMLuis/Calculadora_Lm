@@ -204,24 +204,24 @@ public class MainActivity extends AppCompatActivity {
                     int num2 = Integer.parseInt(n2);
 
                     if (elec_suma) {
-                       opera= new Operacion(num1,num2,"+");
+
                         result.setText("");
                         result.setText(String.valueOf(num1+num2));
-
+                        opera= new Operacion(num1,num2,"+",String.valueOf(num1+num2));
 
                     }
                     if (elec_resta) {
-                        opera=new Operacion(num1,num2,"-");
+
                         result.setText("");
                         result.setText(String.valueOf(num1-num2));
-
+                        opera=new Operacion(num1,num2,"-",String.valueOf(num1-num2));
                     }
 
                     if (elec_multi) {
-                        opera=new Operacion(num1,num2,"*");
+
                         result.setText("");
                         result.setText(String.valueOf(num1*num2));
-
+                        opera=new Operacion(num1,num2,"-",String.valueOf(num1*num2));
                     }
 
                     if (elec_divi) {
@@ -230,9 +230,9 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Error!!", Toast.LENGTH_SHORT).show();
                             result.setText("");
                         } else {
-                            opera=new Operacion(num1,num2,"/");
                             result.setText("");
                             result.setText(String.valueOf(num1/num2));
+                            opera=new Operacion(num1,num2,"-",String.valueOf(num1/num2));
                         }
                     }
                 }
